@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Prescription Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col h-screen">
+
+    <div class="w-full max-w-4xl mx-auto my-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col flex-grow">
+        <div class="text-center p-6 border-b border-gray-200 dark:border-gray-700">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Medical Prescription Assistant</h1>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Upload a handwritten prescription to get insights.</p>
+        </div>
+
+        <!-- Chat Container -->
+        <div id="chat-container" class="flex-grow p-6 overflow-y-auto space-y-6">
+            <!-- Initial AI Welcome Message -->
+            <div class="flex justify-start">
+                 <div class="chat-bubble-ai bg-indigo-500 text-white p-4 rounded-lg rounded-bl-none">
+                    <p class="font-semibold mb-2">Hello!</p>
+                    <p>Please upload an image of your medical prescription. I will transcribe the text and provide helpful information about the medications listed.</p>
+                </div>
+            </div>
+            <!-- Chat messages will be appended here -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loader" class="hidden flex items-center justify-center p-4">
+            <div class="loader"></div>
+            <p class="ml-4 text-gray-500 dark:text-gray-400">Analyzing your prescription...</p>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="p-4 text-center bg-yellow-100 dark:bg-yellow-900 border-t border-gray-200 dark:border-gray-700">
+            <p class="text-xs text-yellow-800 dark:text-yellow-200">
+                <span class="font-bold">Disclaimer:</span> This tool is for informational purposes only and is not a substitute for professional medical advice. Always consult a qualified doctor or pharmacist.
+            </p>
+        </div>
+
+
+        <!-- Input Area -->
+        <div class="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <div class="flex items-center space-x-4">
+                <input type="file" id="image-upload" accept="image/*" class="hidden">
+                <button id="upload-button" class="p-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-transform transform hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                    </svg>
+                </button>
+                 <div id="file-name-display" class="flex-grow bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm rounded-lg p-3 truncate">
+                    No file selected...
+                </div>
+                <button id="convert-button" class="bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition duration-300 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed" disabled>
+                    Analyze
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
